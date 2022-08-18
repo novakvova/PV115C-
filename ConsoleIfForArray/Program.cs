@@ -12,22 +12,22 @@ namespace ConsoleIfForArray
             //int, double, float, string, char, short, bool, unsigned int,
             //decimal, 
             //2^16 = 
-            int n = 5;
-            int [] mas=new int[n];
-            Random r = new Random();
-            for (int i = 0; i < n; i++)
-            {
-                mas[i] = r.Next(2,10);
-            }
-            foreach (int item in mas.Where(x=>x>5))
-            {
-                //if(item>5)
-                    Console.Write(item + "\t");
-            }
-            Console.WriteLine();
-            foreach (int item in mas.Reverse<int>())
-                Console.Write(item+"\t");
-            
+            int a;// значення 0
+            //Console.WriteLine("a = {0}", a);
+            Student ira = new Student("Ірина","Манько",
+                "manko@gmail.com",false);
+
+            ira.Age = 18;
+            ira.LastName = "Красотка";
+            ira.Phone = "+38097 23 45 123";
+            ira.BoyFriend = "Василь Петрович(папік)";
+
+            Console.WriteLine($"Привіт {ira.GetFirstName()} {ira.LastName}!");
+
+            ira.SetFirstName("Мальвіна");
+            ira.Print();
+
+
         }
     }
 }
