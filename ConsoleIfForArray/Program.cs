@@ -1,5 +1,9 @@
-﻿using System;
+﻿using Bogus;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using static Bogus.DataSets.Name;
 
 namespace ConsoleIfForArray
 {
@@ -9,23 +13,49 @@ namespace ConsoleIfForArray
         {
             Console.InputEncoding = System.Text.Encoding.Unicode;
             Console.OutputEncoding = System.Text.Encoding.Unicode;
-            //int, double, float, string, char, short, bool, unsigned int,
-            //decimal, 
-            //2^16 = 
-            int a;// значення 0
-            //Console.WriteLine("a = {0}", a);
-            Student ira = new Student("Ірина","Манько",
-                "manko@gmail.com",false);
+ 
+            List<Student> students = new List<Student>();
 
-            ira.Age = 18;
-            ira.LastName = "Красотка";
-            ira.Phone = "+38097 23 45 123";
-            ira.BoyFriend = "Василь Петрович(папік)";
+            var testUsers = new Faker<Student>("uk")
+                .RuleFor(u => u.Gender, f => f.PickRandom<Gender>())
+                .RuleFor(u => u.LastName, (f,u) => f.Name.LastName(u.Gender))
+                .RuleFor(u => u.FirsttName, (f,u) => f.Name.FirstName(u.Gender))
+                .RuleFor(u=>u.Email, (f, u)=> f.Internet.Email());
 
-            Console.WriteLine($"Привіт {ira.GetFirstName()} {ira.LastName}!");
+            using (StreamWriter sw = new StreamWriter("students.txt"))
+            {
 
-            ira.SetFirstName("Мальвіна");
-            ira.Print();
+                for (int i = 0; i < 10; i++)
+                {
+                    Student s = testUsers.Generate();
+                    students.Add(s);
+                    sw.WriteLine(s);
+                }
+            }
+            
+            //Student ira = new Student("Ірина","Манько",
+            //    "manko@gmail.com",Gender.Female);
+
+            //ira.Age = 18;
+            //ira.LastName = "Красотка";
+            //ira.Phone = "+38097 23 45 123";
+            //ira.BoyFriend = "Василь Петрович(папік)";
+            //students.Add(ira);
+
+            //Student peter = new Student("Петро", "Великий",
+            //    "peter@gmail.com", Gender.Male);
+
+            //peter.Age = 18;
+            //peter.LastName = "Головний";
+            //peter.Phone = "+38097 23 45 123";
+            //peter.BoyFriend = "Оксана Василівна(мамік)";
+
+            //students.Add(peter);
+            foreach (var student in students)
+            {
+                Console.WriteLine("\n___________________________________");
+                Console.WriteLine(student);
+            }
 
 
         }
