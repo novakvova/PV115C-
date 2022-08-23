@@ -41,7 +41,7 @@ namespace ConsoleIfForArray
             //    Console.WriteLine(student);
             //}
             Message message = new Message();
-            message.Body = "Привіт козак!";
+            message.Body = "Привіт <b>козак</b>!";
             message.Subject = "Мені уже 18 :)";
             message.To = "novakvova@gmail.com";
 
