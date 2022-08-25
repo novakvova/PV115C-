@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleIfForArray.Helpers
+namespace EmailLib.Helpers
 {
     public class EmailConfiguration
     {

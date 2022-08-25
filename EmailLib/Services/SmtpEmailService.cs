@@ -1,5 +1,5 @@
-﻿using ConsoleIfForArray.Abstracts;
-using ConsoleIfForArray.Helpers;
+﻿using EmailLib.Abstracts;
+using EmailLib.Helpers;
 using MailKit.Net.Smtp;
 using MimeKit;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleIfForArray.Services
+namespace EmailLib.Services
 {
     public class SmtpEmailService : IEmailService
     {

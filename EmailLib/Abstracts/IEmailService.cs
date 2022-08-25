@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleIfForArray.Abstracts
+namespace EmailLib.Abstracts
 {
     //Відправити листа на пошту.
     public interface IEmailService

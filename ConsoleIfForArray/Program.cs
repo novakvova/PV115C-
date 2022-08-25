@@ -1,6 +1,7 @@
 ﻿using Bogus;
-using ConsoleIfForArray.Abstracts;
-using ConsoleIfForArray.Services;
+using EmailLib;
+using EmailLib.Abstracts;
+using EmailLib.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -40,14 +41,16 @@ namespace ConsoleIfForArray
             //    Console.WriteLine("\n___________________________________");
             //    Console.WriteLine(student);
             //}
-            Message message = new Message();
-            message.Body = "Привіт <b>козак</b>!";
-            message.Subject = "Мені уже 18 :)";
-            message.To = "novakvova@gmail.com";
+            //Message message = new Message();
+            //message.Body = "Привіт <b>козак</b>!";
+            //message.Subject = "Мені уже 18 :)";
+            //message.To = "novakvova@gmail.com";
 
-            IEmailService emailService = new SmtpEmailService();
-            emailService.Send(message);
+            //IEmailService emailService = new SmtpEmailService();
+            //emailService.Send(message);
 
+            SMSService sMSService = new SMSService();
+            sMSService.Send("380966207377","Привіт! Сьогодні крута погода.");
 
 
         }
