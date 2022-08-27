@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,7 +8,7 @@ using static Bogus.DataSets.Name;
 
 namespace ConsoleIfForArray
 {
-    public class Student
+    public class Student 
     {
         //private:
         private string _firstName;
@@ -103,6 +104,19 @@ namespace ConsoleIfForArray
             return str;
         }
 
+
+        public override int GetHashCode()
+        {
+            int hash = _email.GetHashCode();
+            Console.WriteLine(hash);
+            return hash;
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            Student s = obj as Student;
+            return this.Email.Trim().ToLower().Equals(s.Email.Trim().ToLower());
+        }
         public void Print()
         {
             Console.WriteLine("-----Student info----");
@@ -113,5 +127,7 @@ namespace ConsoleIfForArray
             Console.WriteLine($"Телефон: {_phone}") ;
             Console.WriteLine($"Друг: {BoyFriend}") ;
         }
+
+
     }
 }
